@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <title>iOS 透明玻璃按鈕效果</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* 放一張色彩豐富的背景來測試透視感 */
+            background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb') no-repeat center center/cover;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+
+        /* iOS 風格的透明玻璃按鈕 */
+        .ios-glass-btn {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 32px;
+            font-size: 16px;
+            font-weight: 500;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 99px; /* 膠囊圓角 */
+            background: rgba(255, 255, 255, 0.08); /* 極低透明度的底色，讓背景完全透出來 */
+            backdrop-filter: blur(2px); /* 幾乎不模糊，保持背景極度清晰 */
+            -webkit-backdrop-filter: blur(2px);
+            
+            /* 關鍵：多層陰影創造實體感與邊緣光澤 */
+            box-shadow: 
+                0 10px 30px rgba(0, 0, 0, 0.2), /* 底部大陰影（懸浮感） */
+                inset 0 1px 1px rgba(255, 255, 255, 0.6), /* 頂部極細的高光線（立體折射） */
+                inset 0 -1px 2px rgba(255, 255, 255, 0.2), /* 底部內邊緣微光 */
+                0 0 0 1px rgba(255, 255, 255, 0.25); /* 精緻的 1px 外框線 */
+            
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        /* 按下時的互動感 */
+        .ios-glass-btn:active {
+            transform: scale(0.96);
+            background: rgba(255, 255, 255, 0.15);
+        }
+    </style>
+</head>
+<body>
+
+    <button class="ios-glass-btn">自訂</button>
+
+</body>
+</html>
